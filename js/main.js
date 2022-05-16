@@ -1,3 +1,4 @@
+//電腦出拳
 function computerPlay() {
     let onetwothree = Math.round(Math.random()*2);
     const pst = ["paper", "scissors", "rock"];
@@ -48,7 +49,7 @@ function game() {
     let wrong = 0;
     for (let i=0 ; i<5 ; i++ ){
         //把玩家出拳及電腦出拳的變數宣告搬到這裡來，每次才會出新的拳!!!
-       let playerSelection = prompt("出拳吧paper、scissors、rock", "");
+       let playerSelection = prompt("出拳吧paper、scissors、rock", "");//玩家出拳由prompt取
        let computerSelection = computerPlay()
        let output = playRound(playerSelection, computerSelection);
        if(output === "你贏了"){
@@ -64,7 +65,7 @@ function game() {
        console.log(computerSelection);
        console.log(output);
     };
-    /*return `贏了${win}次，輸了${lose}次，平手${tie}次，亂出${wrong}次`;*/
+    
     return "贏了" + win + "次；" + "輸了" + lose + "次；" + "平手" + tie + "次；" + "亂出" + wrong + "次。";
 }
 

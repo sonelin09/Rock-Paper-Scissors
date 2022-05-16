@@ -5,11 +5,12 @@ function computerPlay() {
     return comPlay;
 }
 
-const playerSelection = prompt("出拳吧paper、scissors、rock", "");
-let computerSelection = computerPlay();
+/*let playerSelection = prompt("出拳吧paper、scissors、rock", "");
+let computerSelection = computerPlay();*/
 
 function playRound(playerSelection, computerSelection) {
     let outcome;
+    
     if (playerSelection === computerSelection){
         outcome = "平手";
     }else if (playerSelection === "paper"){
@@ -38,8 +39,36 @@ function playRound(playerSelection, computerSelection) {
     
 }
 
+function game() {
+    let win = 0;
+    let lose = 0;
+    let tie = 0;
+    let wrong = 0;
+    for (let i=0 ; i<5 ; i++ ){
+       let playerSelection = prompt("出拳吧paper、scissors、rock", "");
+       let computerSelection = computerPlay()
+       let output = playRound(playerSelection, computerSelection);
+       if(output === "你贏了"){
+            win += 1;
+       }else if (output === "你輸惹"){
+            lose += 1;
+       }else if (output === "平手"){
+            tie += 1;
+       }else{
+            wrong += 1;
+       }
+       console.log(playerSelection);
+       console.log(computerSelection);
+       console.log(output);
+    };
+    /*return `贏了${win}次，輸了${lose}次，平手${tie}次，亂出${wrong}次`;*/
+    return "贏了" + win + "次；" + "輸了" + lose + "次；" + "平手" + tie + "次；" + "亂出" + wrong + "次。";
+}
 
-console.log("玩家出拳:" + playerSelection);
+
+console.log(game());
+
+/*console.log("玩家出拳:" + playerSelection);
 console.log("電腦出拳:" + computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection));*/
 

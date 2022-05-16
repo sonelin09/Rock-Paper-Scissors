@@ -5,6 +5,8 @@ function computerPlay() {
     return comPlay;
 }
 
+//一開始寫的時候玩家出拳跟電腦出拳的變數寫在全域，但這樣後續在函數裡連續呼叫playRound時並不會重取新的拳，
+//因為只有建立變數時會執行取新拳的函式
 /*let playerSelection = prompt("出拳吧paper、scissors、rock", "");
 let computerSelection = computerPlay();*/
 
@@ -45,6 +47,7 @@ function game() {
     let tie = 0;
     let wrong = 0;
     for (let i=0 ; i<5 ; i++ ){
+        //把玩家出拳及電腦出拳的變數宣告搬到這裡來，每次才會出新的拳!!!
        let playerSelection = prompt("出拳吧paper、scissors、rock", "");
        let computerSelection = computerPlay()
        let output = playRound(playerSelection, computerSelection);

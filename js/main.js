@@ -5,8 +5,8 @@ function computerPlay() {
     return comPlay;
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
+const playerSelection = prompt("出拳吧paper、scissors、rock", "");
+let computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) {
     let outcome;
@@ -30,14 +30,16 @@ function playRound(playerSelection, computerSelection) {
         }else{
             outcome = "你贏了";
         }
+    }else{
+        outcome = "請出正確的拳";
     }
     
     return outcome;
     
 }
 
+
 console.log("玩家出拳:" + playerSelection);
 console.log("電腦出拳:" + computerSelection);
 console.log(playRound(playerSelection, computerSelection));
-
 

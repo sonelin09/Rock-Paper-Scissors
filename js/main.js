@@ -6,6 +6,25 @@ function computerPlay() {
     return comPlay;
 }
 
+//玩家選擇鈕
+const body = document.querySelector('#body');
+const btnRock = document.createElement('button');
+btnRock.setAttribute("class", "buttons");
+const btnPaper = document.createElement('button');
+btnPaper.setAttribute("class", "buttons");
+const btnScissors = document.createElement('button');
+btnScissors.setAttribute("class", "buttons");
+//const btns = document.querySelectorAll('button');//取所有按鈕
+
+btnRock.textContent = "Rock";
+body.appendChild(btnRock);
+btnPaper.textContent = "Papper";
+body.appendChild(btnPaper);
+btnScissors.textContent = "Scissors";
+body.appendChild(btnScissors);
+
+
+
 //一開始寫的時候玩家出拳跟電腦出拳的變數寫在全域，但這樣後續在函數裡連續呼叫playRound時並不會重取新的拳，
 //因為只有建立變數時會執行取新拳的函式
 /*let playerSelection = prompt("出拳吧paper、scissors、rock", "");
@@ -47,30 +66,11 @@ function game() {
     let lose = 0;
     let tie = 0;
     let wrong = 0;
-    for (let i=0 ; i<5 ; i++ ){
-        //把玩家出拳及電腦出拳的變數宣告搬到這裡來，每次才會出新的拳!!!
-       let playerSelection = prompt("出拳吧paper、scissors、rock", "");//玩家出拳由prompt取
-       let computerSelection = computerPlay()
-       let output = playRound(playerSelection, computerSelection);
-       if(output === "你贏了"){
-            win += 1;
-       }else if (output === "你輸惹"){
-            lose += 1;
-       }else if (output === "平手"){
-            tie += 1;
-       }else{
-            wrong += 1;
-       }
-       console.log(playerSelection);
-       console.log(computerSelection);
-       console.log(output);
-    };
     
-    return "贏了" + win + "次；" + "輸了" + lose + "次；" + "平手" + tie + "次；" + "亂出" + wrong + "次。";
 }
 
 
-console.log(game());
+//console.log(game());
 
 /*console.log("玩家出拳:" + playerSelection);
 console.log("電腦出拳:" + computerSelection);

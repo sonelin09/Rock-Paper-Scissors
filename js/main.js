@@ -1,27 +1,37 @@
 //電腦出拳
 function computerPlay() {
     let onetwothree = Math.round(Math.random()*2);
-    const pst = ["paper", "scissors", "rock"];
+    const pst = ["剪刀", "石頭", "布"];
     let comPlay = pst[onetwothree];
     return comPlay;
 }
 
-//玩家選擇鈕
+//整個body
 const body = document.querySelector('#body');
+
+//排版用div
+const container = document.createElement('div');
+body.appendChild(container);
+container.setAttribute("class", "container");
+
+//玩家選擇鈕
 const btnRock = document.createElement('button');
 btnRock.setAttribute("class", "buttons");
 const btnPaper = document.createElement('button');
 btnPaper.setAttribute("class", "buttons");
 const btnScissors = document.createElement('button');
 btnScissors.setAttribute("class", "buttons");
-//const btns = document.querySelectorAll('button');//取所有按鈕
+//加入DOM
+btnScissors.textContent = "剪刀";
+container.appendChild(btnScissors);
+btnRock.textContent = "石頭";
+container.appendChild(btnRock);
+btnPaper.textContent = "布";
+container.appendChild(btnPaper);
 
-btnRock.textContent = "Rock";
-body.appendChild(btnRock);
-btnPaper.textContent = "Papper";
-body.appendChild(btnPaper);
-btnScissors.textContent = "Scissors";
-body.appendChild(btnScissors);
+
+const btns = document.querySelectorAll('button');
+btns.addEventListener('click', playRound(this.textContent, computerPlay()));
 
 
 
@@ -30,25 +40,26 @@ body.appendChild(btnScissors);
 /*let playerSelection = prompt("出拳吧paper、scissors、rock", "");
 let computerSelection = computerPlay();*/
 
+//判斷輸贏
 function playRound(playerSelection, computerSelection) {
     let outcome;
     
     if (playerSelection === computerSelection){
         outcome = "平手";
-    }else if (playerSelection === "paper"){
-        if (computerSelection === "scissors"){
+    }else if (playerSelection === "布"){
+        if (computerSelection === "剪刀"){
             outcome = "你輸惹";
         }else{
             outcome = "你贏了";
         }
-    }else if (playerSelection === "scissors"){
-        if (computerSelection === "rock"){
+    }else if (playerSelection === "剪刀"){
+        if (computerSelection === "石頭"){
             outcome = "你輸惹";
         }else{
             outcome = "你贏了";
         }
-    }else if (playerSelection === "rock") {
-        if (computerSelection === "paper"){
+    }else if (playerSelection === "石頭") {
+        if (computerSelection === "布"){
             outcome = "你輸惹";
         }else{
             outcome = "你贏了";
@@ -58,7 +69,7 @@ function playRound(playerSelection, computerSelection) {
     }
     
     return outcome;
-    
+    console.log(outcome);
 }
 
 function game() {
@@ -68,6 +79,7 @@ function game() {
     let wrong = 0;
     
 }
+
 
 
 //console.log(game());

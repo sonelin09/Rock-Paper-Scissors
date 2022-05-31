@@ -22,4 +22,8 @@ button {
     align-items: center;
 }
 
+.output {
+  display: flex;
+  justify-content: center;
+}
 

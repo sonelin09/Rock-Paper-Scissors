@@ -13,6 +13,11 @@ const body = document.querySelector('#body');
 const container = document.createElement('div');
 body.appendChild(container);
 container.setAttribute("class", "container");
+const container2 = document.createElement('div');
+body.appendChild(container2);
+
+
+
 
 //玩家選擇鈕
 const btnRock = document.createElement('button');
@@ -35,16 +40,17 @@ for (let i = 0; i<3; i++){
     allBtns[i].addEventListener('click', playRound);
 }
 
+const showOutcome = document.createElement('label');
 //一開始寫的時候玩家出拳跟電腦出拳的變數寫在全域，但這樣後續在函數裡連續呼叫playRound時並不會重取新的拳，
 //因為只有建立變數時會執行取新拳的函式
 /*let playerSelection = prompt("出拳吧paper、scissors、rock", "");
 let computerSelection = computerPlay();*/
 
-/*let showOutcome = document.createAttribute('div');
-container.appendChild(showOutcome);*/
+
 
 //判斷輸贏
 function playRound(playerSelection, computerSelection) {
+    showOutcome.textContent = '';
     let outcome;
     playerSelection = playerSelection.target.textContent;
     console.log("玩家出" + playerSelection);
@@ -73,7 +79,8 @@ function playRound(playerSelection, computerSelection) {
     }else{
         outcome = "請出正確的拳";
     }
-    console.log(outcome);
+    showOutcome.textContent = outcome;
+    container2.appendChild(showOutcome);
     return outcome;
 }
 

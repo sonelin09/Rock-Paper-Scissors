@@ -41,6 +41,7 @@ for (let i = 0; i<3; i++){
 }
 
 const showOutcome = document.createElement('label');
+showOutcome.setAttribute("class", "output");
 //一開始寫的時候玩家出拳跟電腦出拳的變數寫在全域，但這樣後續在函數裡連續呼叫playRound時並不會重取新的拳，
 //因為只有建立變數時會執行取新拳的函式
 /*let playerSelection = prompt("出拳吧paper、scissors、rock", "");
@@ -84,16 +85,9 @@ function playRound(playerSelection, computerSelection) {
     return outcome;
 }
 
-function game() {
-    let win = 0;
-    let lose = 0;
-    let tie = 0;
-    let wrong = 0;
-    
-}
 
 
-//console.log(game());
+
 
 /*console.log("玩家出拳:" + playerSelection);
 console.log("電腦出拳:" + computerSelection);

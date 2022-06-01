@@ -10,10 +10,15 @@ function computerPlay() {
 const body = document.querySelector('#body');
 
 //排版用div
+const playerText = document.createElement('p');
+playerText.textContent = "玩家請選擇要出的拳：";
+playerText.setAttribute("class", "plytxt");
+body.appendChild(playerText);
 const container = document.createElement('div');
 body.appendChild(container);
 container.setAttribute("class", "container");
 const container2 = document.createElement('div');
+container2.setAttribute("class", "container2");
 body.appendChild(container2);
 
 
@@ -40,6 +45,8 @@ for (let i = 0; i<3; i++){
     allBtns[i].addEventListener('click', playRound);
 }
 
+const plySlct = document.createElement('label');
+const cptSlct = document.createElement('label');
 const showOutcome = document.createElement('label');
 showOutcome.setAttribute("class", "output");
 //一開始寫的時候玩家出拳跟電腦出拳的變數寫在全域，但這樣後續在函數裡連續呼叫playRound時並不會重取新的拳，
@@ -52,6 +59,8 @@ let computerSelection = computerPlay();*/
 //判斷輸贏
 function playRound(playerSelection, computerSelection) {
     showOutcome.textContent = '';
+    plySlct.textContent = '';
+    cptSlct.textContent = '';
     let outcome;
     playerSelection = playerSelection.target.textContent;
     console.log("玩家出" + playerSelection);
@@ -80,8 +89,12 @@ function playRound(playerSelection, computerSelection) {
     }else{
         outcome = "請出正確的拳";
     }
-    showOutcome.textContent = outcome;
-    container2.appendChild(showOutcome);
+    plySlct.textContent = "你出：" + playerSelection;
+    container2.appendChild(plySlct);
+    cptSlct.textContent = "電腦出：" + computerSelection;
+    container2.appendChild(cptSlct);
+    showOutcome.textContent = "結果：" + outcome;
+    body.appendChild(showOutcome);
     return outcome;
 }
 

@@ -45,56 +45,90 @@ for (let i = 0; i<3; i++){
     allBtns[i].addEventListener('click', playRound);
 }
 
+
+//紀錄玩家、電腦、此次輸贏、累積輸贏次數
 const plySlct = document.createElement('label');
 const cptSlct = document.createElement('label');
 const showOutcome = document.createElement('label');
 showOutcome.setAttribute("class", "output");
+let nowScore = [0, 0, 0];
+const total = document.createElement('label');
+
+
 //一開始寫的時候玩家出拳跟電腦出拳的變數寫在全域，但這樣後續在函數裡連續呼叫playRound時並不會重取新的拳，
 //因為只有建立變數時會執行取新拳的函式
 /*let playerSelection = prompt("出拳吧paper、scissors、rock", "");
 let computerSelection = computerPlay();*/
 
-
-
-//判斷輸贏
-function playRound(playerSelection, computerSelection) {
+//上次出拳的畫面洗掉
+function reStart() {
     showOutcome.textContent = '';
     plySlct.textContent = '';
     cptSlct.textContent = '';
+}
+
+//顯示結果到畫面
+function judge(){
+    if (nowScore[0] === 5) {
+        console.log('喔耶!贏了!')
+    }else if (nowScore[1] === 5){
+        console.log('呵呵，輸了')
+    }else if (nowScore[2 === 5]){
+        console.log('打了個平手~')
+    }else{
+        console.log('目前贏:' + nowScore[0] + '次；' + 
+        '目前輸:' + nowScore[1] + '次；' + '平手:' + nowScore[2] + '次');
+    }
+}
+
+//判斷輸贏
+function playRound(playerSelection, computerSelection) {
+    reStart();
     let outcome;
     playerSelection = playerSelection.target.textContent;
-    console.log("玩家出" + playerSelection);
+    //console.log("玩家出" + playerSelection);
     computerSelection = computerPlay();
-    console.log("電腦出" + computerSelection);
+    //console.log("電腦出" + computerSelection);
     if (playerSelection === computerSelection){
         outcome = "平手";
+        nowScore[2] ++;
     }else if (playerSelection === "布"){
         if (computerSelection === "剪刀"){
             outcome = "你輸惹";
+            nowScore[1] ++;
         }else{
             outcome = "你贏了";
+            nowScore[0] ++;
         }
     }else if (playerSelection === "剪刀"){
         if (computerSelection === "石頭"){
             outcome = "你輸惹";
+            nowScore[1] ++;
         }else{
             outcome = "你贏了";
+            nowScore[0] ++;
         }
     }else if (playerSelection === "石頭") {
         if (computerSelection === "布"){
             outcome = "你輸惹";
+            nowScore[1] ++;
         }else{
             outcome = "你贏了";
+            nowScore[0] ++;
         }
     }else{
         outcome = "請出正確的拳";
     }
+    
     plySlct.textContent = "你出：" + playerSelection;
     container2.appendChild(plySlct);
     cptSlct.textContent = "電腦出：" + computerSelection;
     container2.appendChild(cptSlct);
     showOutcome.textContent = "結果：" + outcome;
     body.appendChild(showOutcome);
+    judge();
+    //console.log('目前贏:' + nowScore[0] + '次；' + '目前輸:' + nowScore[1] + '次；' + '平手:' + nowScore[2] + '次');
+
     return outcome;
 }
 

@@ -62,7 +62,6 @@ let computerSelection = computerPlay();*/
 
 //上次出拳的畫面洗掉
 function reStart() {
-    showOutcome.textContent = '';
     plySlct.textContent = '';
     cptSlct.textContent = '';
 }
@@ -70,12 +69,27 @@ function reStart() {
 //顯示結果到畫面
 function judge(){
     if (nowScore[0] === 5) {
-        console.log('喔耶!贏了!')
+        showOutcome.textContent = '喔耶!贏了!';
+        body.appendChild(showOutcome);
+        for(let i = 0; i<3; i++){
+            nowScore[i] = 0;
+        }
     }else if (nowScore[1] === 5){
-        console.log('呵呵，輸了')
-    }else if (nowScore[2 === 5]){
-        console.log('打了個平手~')
+        showOutcome.textContent = '呵呵，輸了';
+        body.appendChild(showOutcome);
+        for(let i = 0; i<3; i++){
+            nowScore[i] = 0;
+        }
+    }else if (nowScore[2] === 5){
+        showOutcome.textContent = '打了個平手~';
+        body.appendChild(showOutcome);
+        for(let i = 0; i<3; i++){
+            nowScore[i] = 0;
+        }
     }else{
+        showOutcome.textContent = '目前贏:' + nowScore[0] + '次；' + 
+        '目前輸:' + nowScore[1] + '次；' + '平手:' + nowScore[2] + '次';
+        body.appendChild(showOutcome);
         console.log('目前贏:' + nowScore[0] + '次；' + 
         '目前輸:' + nowScore[1] + '次；' + '平手:' + nowScore[2] + '次');
     }
@@ -124,8 +138,8 @@ function playRound(playerSelection, computerSelection) {
     container2.appendChild(plySlct);
     cptSlct.textContent = "電腦出：" + computerSelection;
     container2.appendChild(cptSlct);
-    showOutcome.textContent = "結果：" + outcome;
-    body.appendChild(showOutcome);
+    /*showOutcome.textContent = "結果：" + outcome;
+    body.appendChild(showOutcome);*/
     judge();
     //console.log('目前贏:' + nowScore[0] + '次；' + '目前輸:' + nowScore[1] + '次；' + '平手:' + nowScore[2] + '次');
 

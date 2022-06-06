@@ -66,7 +66,7 @@ function reStart() {
     cptSlct.textContent = '';
 }
 
-//顯示結果到畫面
+//顯示結果到畫面，5次後會將累積次數歸零
 function judge(){
     if (nowScore[0] === 5) {
         showOutcome.textContent = '喔耶!贏了!';
